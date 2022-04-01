@@ -1,7 +1,7 @@
 import React from 'react'
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../../node_modules/bootstrap/dist/js/bootstrap.min.js"
-import Logo from "../../src/freetwings.jpg"
+import Logo from "../../src/logo.jpg"
 import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
