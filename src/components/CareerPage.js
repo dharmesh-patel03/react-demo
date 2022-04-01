@@ -2,17 +2,21 @@ import React,{ useState,useEffect} from 'react'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import green from '@material-ui/core/colors/lightGreen';
+import { useSelector } from 'react-redux';
 
 const CareerPage = () => {
+    const allData = useSelector((state) => state.reducer)
     const [data, setData] = useState({
         title: "",
-        shortDesc: "",
-        workplaceType:""
+        shortDesc: "add short description",
+        workplaceType:"add workplaceType"
     })
     useEffect(() => {
-        const data1=JSON.parse((localStorage.getItem('myData')))
-        setData({ ...data, title: data1[0].title, shortDesc: data1[0].shortDesc, workplaceType: data1[0].workplaceType })
-    },[data]);
+        // console.log(allData)
+        setData((data) => {
+            return{ ...data, title:allData.title,shortDesc:allData.shortDesc,workplaceType:allData.workplaceType}
+        })
+    },[allData]);
     
     
       return (

@@ -14,6 +14,8 @@ import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
+import { useDispatch } from 'react-redux';
+import { submitData } from '../actions/index';
 
 const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -77,6 +79,7 @@ const useStyles = makeStyles(() => ({
 
 const Dashboard = () => {
     const classes = useStyles();
+    const dispatch = useDispatch()
 
     const [data, setData] = useState({
         title: "",
@@ -97,6 +100,16 @@ const Dashboard = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem("myData", JSON.stringify([data]));
+        dispatch(submitData(data))
+        setData({
+            title: "",
+            status: "",
+            jobSections: "",
+            employmentsType: "",
+            workplaceType: "",
+            location: "",
+            shortDesc: ""
+        })
     }
 
     return (
